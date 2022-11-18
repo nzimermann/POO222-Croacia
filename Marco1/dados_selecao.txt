@@ -1,0 +1,18 @@
+number:1, name:"Ivo Grbic", nickname:"Ivo", height:196, weight:83, birthDate:"1996-01-18", position:"goalkeeper", currentClub:"Atletico Madrid"
+number:1, name:"Ivica Ivusic", nickname:"Ivica", height:196, weight:77, birthDate:"1995-02-01", position:"goalkeeper", currentClub:"Osijek"
+number:6, name:"Dejan Lovren", nickname:"Dejan", height:188, weight:83, birthDate:"1989-07-05", position:"defender", currentClub:"Zenit St Petersburg"
+number:21, name:"Domagoj Vida", nickname:"Vida", height:183, weight:76, birthDate:"1989-04-29", position:"defender", currentClub:"AEK Athens"
+number:31, name:"Borna Barisic", nickname:"Borna", height:185, weight:78, birthDate:"1992-11-10", position:"defender", currentClub:"Rangers"
+number:10, name:"Luka Modric", nickname:"Modric", height:173, weight:66, birthDate:"1985-09-09", position:"midfield", currentClub:"Real Madrid"
+number:8, name:"Mateo Kovacic", nickname:"Mateo", height:178, weight:78, birthDate:"1994-05-06", position:"midfield", currentClub:"Chelsea"
+number:21, name:"Luka Sucic", nickname:"Luka", height:185, weight:71, birthDate:"2002-09-08", position:"midfield", currentClub:"FC Salzburg"
+number:27, name:"Andrej Kramaric", nickname:"Andrej", height:178, weight:73, birthDate:"1991-06-19", position:"attacker", currentClub:"Hoffenheim"
+number:9, name:"Bruno Petkovic", nickname:"Bruno", height:193, weight:87, birthDate:"1994-09-16", position:"attacker", currentClub:"D Zagreb"
+number:17, name:"Ante Budimir", nickname:"Ante", height:191, weight:73, birthDate:"1991-07-22", position:"attacker", currentClub:"Osasuna"
+
+name:"Luka Modrić", nickname:"Luka", role:"Capitain", age: 37
+name:"Davor Šuker", nickname:"Davor", role:"Coach", age: 44
+name:"Zlatko Dalić", nickname:"Zlatko", role:"Trainer", age: 52
+
+name:"Zlatko Dalić", tel1:"+5381989876543", tel2:"+876992118765", emailAccount:"zlatko@gmail.com"
+name:"Louis van Gaal", tel1:"+5561986516543", tel2:"+974992065455", emailAccount:"LouisGaal@hotmail.com"

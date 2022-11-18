@@ -1,0 +1,5 @@
+Lista de conhecimentos necessários para o desenvolvimento do trabalho:
+- Git
+- Github
+- Uso da classe Image do Java
+- Formato JSON
