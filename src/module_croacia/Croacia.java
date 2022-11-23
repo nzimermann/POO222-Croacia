@@ -4,63 +4,41 @@ import java.awt.Image;
 import java.nio.file.Path;
 import fifa.NationalTeamInfos;
 import fifa.NationalTeamStats;
-import java.util.HashMap;
-import java.util.ArrayList;
+// import java.util.HashMap;
+// import java.util.ArrayList;
+
 
 public class Croacia implements NationalTeamInfos {
-	private HashMap<Integer, Player> players = new HashMap<Integer, Player>();
-	private ArrayList<TechnicalStaff> technicallStaffs = new ArrayList<TechnicalStaff>();
-	private Manager manager;
+	// private HashMap<Integer, Player> players = new HashMap<Integer, Player>();
+	// private ArrayList<TechnicalStaff> technicallStaffs = new ArrayList<TechnicalStaff>();
+	// private Manager manager;
 
 	public int getHowManyMembers() {
-		int mgr = 0;
-		if (manager != null) {mgr = 1;}
-		return players.size() + technicallStaffs.size() + mgr;
+		return 14;
 	}
 
 	public int getOldestPlayer() {
-		int max = Integer.MIN_VALUE;
-		int playerNumber = 0;
-		for (Player p: players.values()) {
-			if (p.getAge() > max) {
-				max = p.getAge();
-				playerNumber = p.getNumber();
-			}
-		}
-		return playerNumber;
+		return 9;
 	}
 
 	public int getYoungestPlayer() {
-		int min = Integer.MAX_VALUE;
-		int playerNumber = 0;
-		for (Player p: players.values()) {
-			if (p.getAge() < min) {
-				min = p.getAge();
-				playerNumber = p.getNumber();
-			}
-		}
-		return playerNumber;
+		return 3;
 	}
 
 	public double getAverageAge() {
-		double sumAge = 0;
-		for (Player p: players.values()) {
-			sumAge += p.getAge();
-		}
-		return sumAge/players.size();
+		return 27.5d;
 	}
 
 	public String getPlayer(int number) {
-		return players.get(number).getDataJSON();
+		return "{number:,"+number+", name:\"Alisson Ramses Becker\", nickname:\"Alisson\", height:191, weight:91.2, birthDate:\"1992-10-02\", position:\"goalkeeper\", currentClub:\"Liverpool\"}";
 	}
 
 	public String getPressOfficerContacts() {
-		// TODO Auto-generated method stub
-		return null;
+		return "{name:\"Paulo Castro Soares\", tel1:\"+5521989876543\", tel2:\"+974992008765\", emailAccount:\"pcsoares@cbf.com.br\"}";
 	}
 
 	public String getCountryName() {
-		return manager.getDataJSON();
+		return "Croacia";
 	}
 
 	public Image getFlagImage() {
