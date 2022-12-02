@@ -18,6 +18,24 @@ public class Croacia implements NationalTeamInfos {
 	private Manager manager;
 	private CroaciaStats stats = new CroaciaStats();
 
+	public Croacia() {
+		this.addPlayer(new Player(1, "Ivo Grbic", "Ivo", 196, 83d, LocalDate.of(1996, 1, 18), "goalkeeper", "Atletico Madrid"));
+		this.addPlayer(new Player(2, "Ivica Ivusic", "Ivica", 196, 77d, LocalDate.of(1995, 2, 1), "goalkeeper", "Osijek"));
+		this.addPlayer(new Player(6, "Dejan Lovren", "Dejan", 188, 83d, LocalDate.of(1989, 7, 5), "defender", "Zenit St Petersburg"));
+		this.addPlayer(new Player(21, "Domagoj Vida", "Vida", 183, 76d, LocalDate.of(1989, 4, 29), "defender", "AEK Athens"));
+		this.addPlayer(new Player(31, "Borna Barisic", "Borna", 185, 78d, LocalDate.of(1992, 11, 10), "defender", "Rangers"));
+		this.addPlayer(new Player(10, "Luka Modric", "Modric", 173, 66d, LocalDate.of(1985, 9, 9), "midfield", "Real Madrid"));
+		this.addPlayer(new Player(8, "Mateo Kovacic", "Mateo", 178, 78d, LocalDate.of(1994, 5, 6), "midfield", "Chelsea"));
+		this.addPlayer(new Player(21, "Luka Sucic", "Luka", 185, 71d, LocalDate.of(2002, 9, 8), "midfield", "FC Salzburg"));
+		this.addPlayer(new Player(27, "Andrej Kramaric", "Andrej", 178, 73d, LocalDate.of(1991, 6, 19), "attacker", "Hoffenheim"));
+		this.addPlayer(new Player(9, "Bruno Petkovic", "Bruno", 193, 87d, LocalDate.of(1994, 9, 16), "attacker", "D Zagreb"));
+		this.addPlayer(new Player(17, "Ante Budimir", "Ante", 191, 73d, LocalDate.of(1991, 7, 22), "attacker", "Osasuna"));
+		this.addTechnicalStaff(new TechnicalStaff("Luka Modrić", "Luka", "Capitain", LocalDate.of(1985, 9, 9)));
+		this.addTechnicalStaff(new TechnicalStaff("Davor Šuker", "Davor", "Coach", LocalDate.of(1968, 1, 1)));
+		this.addTechnicalStaff(new TechnicalStaff("Zlatko Dalić", "Zlatko", "Trainer", LocalDate.of(1966, 10, 26)));
+		this.setManager(new Manager("Louis van Gaal", "3851989876543", "3859921187654", "LouisGaal@hotmail.com"));
+	}
+
 	private void addPlayer(Player player) {
 		if (player == null) {
 			throw new IllegalArgumentException("Null player");
