@@ -51,9 +51,10 @@ public class Manager {
 	}
 	
 	public String getDataJSON() {
-		return "{name: \""+name+"\"}, tel1:\"+"
-				+tel1+"\", tel2:\"+"
-				+tel2+"\", emailAccount:\""
-				+emailAccount+"\"}";
+		return "{\n\tname: \""+name+"\",\n\ttel1:\"+"
+				+tel1+"\",\n\ttel2:\"+"
+				+tel2+"\",\n\temailAccount:\""
+				+emailAccount+"\"\n}";
 	}
+
 }

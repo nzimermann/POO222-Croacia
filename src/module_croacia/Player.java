@@ -109,14 +109,15 @@ public class Player {
 	}
 
 	public String getDataJSON() {
-		return "{number:"
-				+number+", name:\""
-				+name+"\", nickname:\""
-				+nickname+"\", height:"
-				+height+", weight:"
-				+weight+", birthDate:\""
-				+birthDate+"\", position:\""
-				+position+"\", currentClub:\""
-				+currentClub+"\"}";
+		return "{\n\tnumber:"
+				+number+",\n\tname:\""
+				+name+"\",\n\tnickname:\""
+				+nickname+"\",\n\theight:"
+				+height+",\n\tweight:"
+				+weight+",\n\tbirthDate:\""
+				+birthDate+"\",\n\tposition:\""
+				+position+"\",\n\tcurrentClub:\""
+				+currentClub+"\"\n}";
 	}
+
 }

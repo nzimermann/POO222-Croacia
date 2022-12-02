@@ -61,10 +61,11 @@ public class TechnicalStaff {
 	}
 	
 	public String getDataJSON() {
-		return "{name:\""
-				+name+"\", nickname:\""
-				+nickname+"\", role:\""
-				+role+"\", age:"
-				+this.getAge()+"}";
+		return "{\n\tname:\""
+				+name+"\",\n\tnickname:\""
+				+nickname+"\",\n\trole:\""
+				+role+"\",\n\tage:"
+				+this.getAge()+"\n}";
 	}
+
 }
