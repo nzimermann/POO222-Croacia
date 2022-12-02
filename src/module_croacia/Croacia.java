@@ -41,6 +41,7 @@ public class Croacia implements NationalTeamInfos {
 			throw new IllegalArgumentException("Null player");
 		}
 		this.players.put(player.getNumber(), player);
+		this.stats.addPlayer(player.getNumber()); // Add player to request counter
 	}
 
 	private void addTechnicalStaff(TechnicalStaff technicalStaff) {
@@ -58,11 +59,13 @@ public class Croacia implements NationalTeamInfos {
 	}
 
 	public int getHowManyMembers() {
+		stats.incRequestCount();
 		return players.size() + technicalStaffs.size()
 		+ (manager != null ? 1 : 0);
 	}
 
 	public int getOldestPlayer() {
+		stats.incRequestCount();
 		int max = Integer.MIN_VALUE;
 		int playerNumber = 0;
 		for (Player p: players.values()) {
@@ -75,6 +78,7 @@ public class Croacia implements NationalTeamInfos {
 	}
 
 	public int getYoungestPlayer() {
+		stats.incRequestCount();
 		int min = Integer.MAX_VALUE;
 		int playerNumber = 0;
 		for (Player p: players.values()) {
@@ -87,6 +91,7 @@ public class Croacia implements NationalTeamInfos {
 	}
 
 	public double getAverageAge() {
+		stats.incRequestCount();
 		double sumAge = 0;
 		for (Player p: players.values()) {
 			sumAge += p.getAge();
@@ -95,19 +100,24 @@ public class Croacia implements NationalTeamInfos {
 	}
 
 	public String getPlayer(int number) {
+		stats.incRequestCount();
+		stats.incPlayerRequestCount(number);
 		Player p = players.get(number);
 		return p == null ? null : p.getDataJSON();
 	}
 
 	public String getPressOfficerContacts() {
+		stats.incRequestCount();
 		return manager == null ? null : manager.getDataJSON();
 	}
 
 	public String getCountryName() {
+		stats.incRequestCount();
 		return "Croacia";
 	}
 
 	public Image getFlagImage() {
+		stats.incRequestCount();
 		try {
 		    BufferedImage image = ImageIO.read(getClass().getResource("/module_croacia/croacia.png"));
 		    return image;
@@ -120,11 +130,13 @@ public class Croacia implements NationalTeamInfos {
 	}
 
 	public Path getTechnicalCommittee() {
+		stats.incRequestCount();
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public NationalTeamStats getStatsResponsible() {
+		stats.incRequestCount();
 		return stats;
 	}
 
