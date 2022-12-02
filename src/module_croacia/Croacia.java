@@ -1,28 +1,47 @@
 package module_croacia;
 
 import java.awt.Image;
-import java.io.File;
+import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import fifa.NationalTeamInfos;
 import fifa.NationalTeamStats;
 import java.util.HashMap;
-
 import javax.imageio.ImageIO;
-
 import java.util.ArrayList;
-
 
 public class Croacia implements NationalTeamInfos {
 	private HashMap<Integer, Player> players = new HashMap<Integer, Player>();
-	private ArrayList<TechnicalStaff> technicallStaffs = new ArrayList<TechnicalStaff>();
+	private ArrayList<TechnicalStaff> technicalStaffs = new ArrayList<TechnicalStaff>();
 	private Manager manager;
+	private CroaciaStats stats = new CroaciaStats();
+
+	private void addPlayer(Player player) {
+		if (player == null) {
+			throw new IllegalArgumentException("Null player");
+		}
+		this.players.put(player.getNumber(), player);
+	}
+
+	private void addTechnicalStaff(TechnicalStaff technicalStaff) {
+		if (technicalStaff == null) {
+			throw new IllegalArgumentException("Null technical staff");
+		}
+		this.technicalStaffs.add(technicalStaff);
+	}
+
+	private void setManager(Manager manager) {
+		if (manager == null) {
+			throw new IllegalArgumentException("Null manager");
+		}
+		this.manager = manager;
+	}
 
 	public int getHowManyMembers() {
-		int mgr = 0;
-		if (manager != null) {mgr = 1;}
-		return players.size() + technicallStaffs.size() + mgr;
+		return players.size() + technicalStaffs.size()
+		+ (manager != null ? 1 : 0);
 	}
 
 	public int getOldestPlayer() {
@@ -58,11 +77,12 @@ public class Croacia implements NationalTeamInfos {
 	}
 
 	public String getPlayer(int number) {
-		return players.get(number).getDataJSON();
+		Player p = players.get(number);
+		return p == null ? null : p.getDataJSON();
 	}
 
 	public String getPressOfficerContacts() {
-		return manager.getDataJSON();
+		return manager == null ? null : manager.getDataJSON();
 	}
 
 	public String getCountryName() {
@@ -71,13 +91,12 @@ public class Croacia implements NationalTeamInfos {
 
 	public Image getFlagImage() {
 		try {
-		    File pathToFile = new File("croacia.png");
-		    Image image = ImageIO.read(pathToFile);
+		    BufferedImage image = ImageIO.read(getClass().getResource("/module_croacia/croacia.png"));
 		    return image;
-		} catch (FileNotFoundException fne) {
-			fne.printStackTrace();
-		} catch (IOException ex) {
-		    ex.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -88,8 +107,7 @@ public class Croacia implements NationalTeamInfos {
 	}
 
 	public NationalTeamStats getStatsResponsible() {
-		// TODO Auto-generated method stub
-		return null;
+		return stats;
 	}
 
 }
