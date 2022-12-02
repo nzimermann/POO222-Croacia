@@ -13,6 +13,18 @@ public class Player {
 	private String position;
 	private String currentClub;
 
+	public Player(int number, String name, String nickname, int height,
+			double weight, LocalDate birthDate, String position, String currentClub) {
+		this.setNumber(number);
+		this.setName(name);
+		this.setNickname(nickname);
+		this.setHeight(height);
+		this.setWeight(weight);
+		this.setBirthDate(birthDate);
+		this.setPosition(position);
+		this.setCurrentClub(currentClub);
+	}
+
 	public int getNumber() {
 		return number;
 	}

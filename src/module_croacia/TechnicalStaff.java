@@ -9,6 +9,13 @@ public class TechnicalStaff {
 	private String role;
 	private LocalDate birthDate;
 	
+	public TechnicalStaff(String name, String nickname, String role, LocalDate birthDate) {
+		this.setName(name);
+		this.setNickname(nickname);
+		this.setRole(role);
+		this.setBirthDate(birthDate);
+	}
+
 	public String getName() {
 		return name;
 	}

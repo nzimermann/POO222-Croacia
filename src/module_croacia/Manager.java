@@ -5,7 +5,14 @@ public class Manager {
 	private String tel1;
 	private String tel2;
 	private String emailAccount;
-	
+
+	public Manager(String name, String tel1, String tel2, String emailAccount) {
+		this.setName(name);
+		this.setTel1(tel1);
+		this.setTel2(tel2);
+		this.setEmailAccount(emailAccount);
+	}
+
 	public String getName() {
 		return name;
 	}
