@@ -2,7 +2,9 @@ package module_croacia;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -131,7 +133,25 @@ public class Croacia implements NationalTeamInfos {
 
 	public Path getTechnicalCommittee() {
 		stats.incRequestCount();
-		// TODO Auto-generated method stub
+		String technicalCommittee = "";
+		for (TechnicalStaff t: technicalStaffs) {
+			technicalCommittee += t.getDataJSON()+",\n";
+		}
+
+		// Removes the last comma
+		technicalCommittee = technicalCommittee.substring(0, technicalCommittee.length()-2);
+
+		try {
+			File f = new File("TechnicalCommittee.json");
+			FileWriter fw = new FileWriter(f.getPath());
+			fw.write(technicalCommittee);
+			fw.close();
+			return f.toPath();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
