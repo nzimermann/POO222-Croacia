@@ -26,7 +26,10 @@ public class CroaciaStats implements NationalTeamStats {
 	}
 
 	public int getHowManyCallsToPlayer(int number) {
-		return playerRequestCount.get(number);
+		if (playerRequestCount.containsKey(number)) {
+			return playerRequestCount.get(number);
+		}
+		return 0;
 	}
 
 }

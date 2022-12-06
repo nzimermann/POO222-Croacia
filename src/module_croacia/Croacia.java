@@ -25,11 +25,11 @@ public class Croacia implements NationalTeamInfos {
 		this.addPlayer(new Player(16, "Bruno Petkovic", "Pet", 193, 87d, LocalDate.of(1994, 9, 16), "attacker", "D Zagreb"));
 		this.addPlayer(new Player(6, "Dejan Lovren", "Dejan", 188, 83d, LocalDate.of(1989, 7, 5), "defender", "Zenit St Petersburg"));
 		this.addPlayer(new Player(21, "Domagoj Vida", "Vida", 183, 76d, LocalDate.of(1989, 4, 29), "defender", "AEK Athens"));
-		this.addPlayer(new Player(31, "Borna Barisic", "Borna", 185, 78d, LocalDate.of(1992, 11, 10), "defender", "Rangers"));
+		this.addPlayer(new Player(22, "Borna Barisic", "Borna", 185, 78d, LocalDate.of(1992, 11, 10), "defender", "Rangers"));
 		this.addPlayer(new Player(10, "Luka Modric", "Modric", 173, 66d, LocalDate.of(1985, 9, 9), "midfield", "Real Madrid"));
 		this.addPlayer(new Player(8, "Mateo Kovacic", "Mateo", 178, 78d, LocalDate.of(1994, 5, 6), "midfield", "Chelsea"));
 		this.addPlayer(new Player(15, "Mario Pasalic ", "Mario", 188, 82d, LocalDate.of(1995, 2, 9), "midfield", "Atalanta"));
-		this.addPlayer(new Player(27, "Andrej Kramaric", "Andrej", 178, 73d, LocalDate.of(1991, 6, 19), "attacker", "Hoffenheim"));
+		this.addPlayer(new Player(12, "Andrej Kramaric", "Andrej", 178, 73d, LocalDate.of(1991, 6, 19), "attacker", "Hoffenheim"));
 		this.addPlayer(new Player(9, "Bruno Petkovic", "Bruno", 193, 87d, LocalDate.of(1994, 9, 16), "attacker", "D Zagreb"));
 		this.addPlayer(new Player(17, "Ante Budimir", "Ante", 191, 73d, LocalDate.of(1991, 7, 22), "attacker", "Osasuna"));
 		this.addTechnicalStaff(new TechnicalStaff("Luka Modrić", "Luka", "Capitain", LocalDate.of(1985, 9, 9)));
