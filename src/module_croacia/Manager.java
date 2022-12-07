@@ -1,6 +1,9 @@
 package module_croacia;
 
-public class Manager {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Manager implements Serializable {
 	private String name;
 	private String tel1;
 	private String tel2;

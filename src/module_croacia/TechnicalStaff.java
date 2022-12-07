@@ -1,9 +1,11 @@
 package module_croacia;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class TechnicalStaff {
+@SuppressWarnings("serial")
+public class TechnicalStaff implements Serializable{
 	private String name;
 	private String nickname;
 	private String role;

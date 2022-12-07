@@ -1,9 +1,11 @@
 package module_croacia;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Player {
+@SuppressWarnings("serial")
+public class Player implements Serializable {
 	private int number;
 	private String name;
 	private String nickname;

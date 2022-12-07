@@ -6,12 +6,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.nio.file.Path;
-import java.time.LocalDate;
 import fifa.NationalTeamInfos;
 import fifa.NationalTeamStats;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
+
 import java.util.ArrayList;
 
 public class Croacia implements NationalTeamInfos {
@@ -21,43 +23,25 @@ public class Croacia implements NationalTeamInfos {
 	private CroaciaStats stats = new CroaciaStats();
 
 	public Croacia() {
-		this.addPlayer(new Player(1, "Ivo Grbic", "Ivo", 196, 83d, LocalDate.of(1996, 1, 18), "goalkeeper", "Atletico Madrid"));
-		this.addPlayer(new Player(16, "Bruno Petkovic", "Pet", 193, 87d, LocalDate.of(1994, 9, 16), "attacker", "D Zagreb"));
-		this.addPlayer(new Player(6, "Dejan Lovren", "Dejan", 188, 83d, LocalDate.of(1989, 7, 5), "defender", "Zenit St Petersburg"));
-		this.addPlayer(new Player(21, "Domagoj Vida", "Vida", 183, 76d, LocalDate.of(1989, 4, 29), "defender", "AEK Athens"));
-		this.addPlayer(new Player(22, "Borna Barisic", "Borna", 185, 78d, LocalDate.of(1992, 11, 10), "defender", "Rangers"));
-		this.addPlayer(new Player(10, "Luka Modric", "Modric", 173, 66d, LocalDate.of(1985, 9, 9), "midfield", "Real Madrid"));
-		this.addPlayer(new Player(8, "Mateo Kovacic", "Mateo", 178, 78d, LocalDate.of(1994, 5, 6), "midfield", "Chelsea"));
-		this.addPlayer(new Player(15, "Mario Pasalic ", "Mario", 188, 82d, LocalDate.of(1995, 2, 9), "midfield", "Atalanta"));
-		this.addPlayer(new Player(12, "Andrej Kramaric", "Andrej", 178, 73d, LocalDate.of(1991, 6, 19), "attacker", "Hoffenheim"));
-		this.addPlayer(new Player(9, "Bruno Petkovic", "Bruno", 193, 87d, LocalDate.of(1994, 9, 16), "attacker", "D Zagreb"));
-		this.addPlayer(new Player(17, "Ante Budimir", "Ante", 191, 73d, LocalDate.of(1991, 7, 22), "attacker", "Osasuna"));
-		this.addTechnicalStaff(new TechnicalStaff("Luka Modrić", "Luka", "Capitain", LocalDate.of(1985, 9, 9)));
-		this.addTechnicalStaff(new TechnicalStaff("Davor Šuker", "Davor", "Coach", LocalDate.of(1968, 1, 1)));
-		this.addTechnicalStaff(new TechnicalStaff("Zlatko Dalić", "Zlatko", "Trainer", LocalDate.of(1966, 10, 26)));
-		this.setManager(new Manager("Louis van Gaal", "3851989876543", "3859921187654", "LouisGaal@hotmail.com"));
+		inicialize();
 	}
 
-	private void addPlayer(Player player) {
-		if (player == null) {
-			throw new IllegalArgumentException("Null player");
+	@SuppressWarnings("unchecked")
+	private void inicialize() {
+		try (InputStream is = getClass().getResourceAsStream("/module_croacia/CroaciaData.obj");
+			 ObjectInputStream ois = new ObjectInputStream(is)) {
+			
+			players = (HashMap<Integer, Player>) ois.readObject();
+			technicalStaffs = (ArrayList<TechnicalStaff>) ois.readObject();
+			manager = (Manager) ois.readObject();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		this.players.put(player.getNumber(), player);
-		this.stats.addPlayer(player.getNumber()); // Add player to request counter
-	}
-
-	private void addTechnicalStaff(TechnicalStaff technicalStaff) {
-		if (technicalStaff == null) {
-			throw new IllegalArgumentException("Null technical staff");
-		}
-		this.technicalStaffs.add(technicalStaff);
-	}
-
-	private void setManager(Manager manager) {
-		if (manager == null) {
-			throw new IllegalArgumentException("Null manager");
-		}
-		this.manager = manager;
 	}
 
 	public int getHowManyMembers() {
@@ -103,9 +87,12 @@ public class Croacia implements NationalTeamInfos {
 
 	public String getPlayer(int number) {
 		stats.incRequestCount();
-		stats.incPlayerRequestCount(number);
 		Player p = players.get(number);
-		return p == null ? null : p.getDataJSON();
+		if (p != null) {
+			stats.incPlayerRequestCount(number);
+			return p.getDataJSON();
+		}
+		return null;
 	}
 
 	public String getPressOfficerContacts() {
@@ -121,7 +108,7 @@ public class Croacia implements NationalTeamInfos {
 	public Image getFlagImage() {
 		stats.incRequestCount();
 		try {
-		    BufferedImage image = ImageIO.read(getClass().getResource("/module_croacia/croacia.png"));
+		    BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/module_croacia/croacia.png"));
 		    return image;
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
